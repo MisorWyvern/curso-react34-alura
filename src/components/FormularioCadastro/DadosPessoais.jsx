@@ -27,7 +27,8 @@ function DadosPessoais({ aoEnviar, validarCPF }) {
 				label="Nome"
 				variant="outlined"
 				fullWidth
-				margin="normal"
+                margin="normal"
+                required
 			/>
 
 			<TextField
@@ -39,7 +40,8 @@ function DadosPessoais({ aoEnviar, validarCPF }) {
 				label="Sobrenome"
 				variant="outlined"
 				fullWidth
-				margin="normal"
+                margin="normal"
+                required
 			/>
 
 			<TextField
@@ -57,7 +59,8 @@ function DadosPessoais({ aoEnviar, validarCPF }) {
 				label="CPF"
 				variant="outlined"
 				fullWidth
-				margin="normal"
+                margin="normal"
+                required
 			/>
 
 			<Grid container spacing={2}>
