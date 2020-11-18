@@ -8,6 +8,8 @@ import purple from "@material-ui/core/colors/purple";
 import "fontsource-roboto";
 import "./App.css";
 import FormularioCadastro from "./components/FormularioCadastro/FormularioCadastro";
+import ValidacoesCadastro from "./contexts/ValidacoesCadastro";
+import { validarCPF, validarSenha } from "./models/cadastro";
 
 function App() {
 	return (
@@ -16,14 +18,18 @@ function App() {
 				<Typography variant="h3" component="h1" align="center">
 					Formulário de Cadastro
 				</Typography>
-				<FormularioCadastro validarCPF={validarCPF} aoEnviar={aoEnviarForm} />
+				<ValidacoesCadastro.Provider
+					value={{ cpf: validarCPF, senha: validarSenha, nome: validarSenha }}
+				>
+					<FormularioCadastro aoEnviar={aoEnviarForm} />
+				</ValidacoesCadastro.Provider>
 			</ThemeProvider>
 		</Container>
 	);
 }
 
-function aoEnviarForm(dados){
-  console.log(dados);
+function aoEnviarForm(dados) {
+	console.log(dados);
 }
 
 const theme = createMuiTheme({
@@ -32,16 +38,9 @@ const theme = createMuiTheme({
 			main: purple[500],
 		},
 		secondary: {
-			main: '#d500f9',
+			main: "#d500f9",
 		},
 	},
 });
-
-function validarCPF(cpf){
-	if(cpf.length !== 11){
-		return {valido: false, texto: "CPF deve ter 11 digitos."}
-	}
-	return {valido: true, texto: ""}
-}
 
 export default App;
